@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:test_animation/globel_style/colors.dart';
 import 'package:test_animation/globel_style/my_media_query.dart';
 import 'package:test_animation/globel_style/my_text.dart';
+import 'package:test_animation/my_home_page/my_home_screed.dart';
 
 class DetailsPage extends StatefulWidget {
-  final Map? distination;
+  final Destinations? distination;
   DetailsPage({Key? key, this.distination}) : super(key: key);
 
   @override
@@ -94,12 +95,12 @@ class _DetailsPageState extends State<DetailsPage> with SingleTickerProviderStat
                   Container(
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage("assets/" + widget.distination!["image"]), fit: BoxFit.cover))),
+                              image: AssetImage("assets/" + "${widget.distination!.image}"), fit: BoxFit.cover))),
                   Container(color: blackColor.withOpacity(0.5)),
                   Center(
                       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    MyText(text: "${widget.distination!["location"]}", color: whiteColor, fontSize: 45.0),
-                    MyText(text: "FROM ${widget.distination!["from"]}", color: whiteColor, height: 1.5)
+                    MyText(text: "${widget.distination!.location}", color: whiteColor, fontSize: 45.0),
+                    MyText(text: "FROM ${widget.distination!.from}", color: whiteColor, height: 1.5)
                   ])),
                   SafeArea(
                       child: IconButton(
@@ -121,6 +122,8 @@ class _DetailsPageState extends State<DetailsPage> with SingleTickerProviderStat
                             context: context,
                             isScrollControlled: true,
                             backgroundColor: transparentColor,
+                            transitionAnimationController:
+                                AnimationController(vsync: this, duration: Duration(seconds: 1)),
                             builder: (context) => myBottomSheet(airLineRates[index]));
                       },
                       child: Container(

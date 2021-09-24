@@ -38,18 +38,16 @@ class MyTweenAnimation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TweenAnimationBuilder(
-      duration: Duration(seconds: 1),
-      tween: Tween<double>(begin: 0, end: 1),
-      builder: (BuildContext context, double value, Widget? myChild) {
-        return Opacity(
-          opacity: value,
-          child: Padding(
-            padding: EdgeInsets.only(top: value * 15.0),
-            child: myChild,
-          ),
-        );
-      },
-      child: child,
-    );
+        duration: Duration(seconds: 1),
+        tween: Tween<double>(begin: 0, end: 1),
+        builder: (BuildContext context, double value, Widget? myChild) {
+          return Opacity(
+              opacity: value,
+              child: Padding(
+                padding: EdgeInsets.only(top: value * 15.0),
+                child: myChild,
+              ));
+        },
+        child: child);
   }
 }
